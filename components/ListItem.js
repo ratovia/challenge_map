@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from "react-native"
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native"
 
 const styles = StyleSheet.create({
   itemContainer: {
@@ -28,19 +28,16 @@ const styles = StyleSheet.create({
   },
 })
 
-export const ListItem = ({imageUrl, prefecture, achievement}) => {
+export const ListItem = ({ imageUrl, prefecture, achievement, onPress }) => {
   return (
-    <View style={styles.itemContainer}>
+    <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
       <View style={styles.leftContainer}>
-        <Image
-          source={{ uri: imageUrl }}
-          style={{ width: 100, height: 100 }}
-        />
+        <Image source={{ uri: imageUrl }} style={{ width: 100, height: 100 }} />
       </View>
       <View style={styles.rightContainer}>
         <Text style={styles.text}>{prefecture}</Text>
         <Text style={styles.subText}>{achievement}%</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }

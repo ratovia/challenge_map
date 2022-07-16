@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
 })
 
-export const HomeScreen = () => {
+export const HomeScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
@@ -20,6 +20,11 @@ export const HomeScreen = () => {
             imageUrl="https://picsum.photos/100/100"
             prefecture={item.name}
             achievement={20}
+            onPress={() =>
+              navigation.navigate("Detail", {
+                name: item.name,
+              })
+            }
           />
         )}
         keyExtractor={(pre) => pre.id}
