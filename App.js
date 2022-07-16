@@ -1,20 +1,30 @@
 import { StatusBar } from "expo-status-bar"
-import { StyleSheet, Text, View } from "react-native"
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  )
-}
+import { StyleSheet, View, FlatList, SafeAreaView } from "react-native"
+import { ListItem } from "./components/ListItem"
+import { prefecture } from "./prefecture"
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
 })
+
+export default function App() {
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={prefecture}
+        renderItem={({ item }) => (
+          <ListItem
+            imageUrl="https://picsum.photos/100/100"
+            prefecture={item.name}
+            achievement={20}
+          />
+        )}
+        keyExtractor={(pre) => pre.id}
+      ></FlatList>
+      <StatusBar style="auto" />
+    </SafeAreaView>
+  )
+}
