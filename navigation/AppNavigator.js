@@ -1,21 +1,10 @@
 import { NavigationContainer } from "@react-navigation/native"
-import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { HomeScreen } from "../screens/HomeScreen"
-import { DetailScreen } from "../screens/DetailScreen"
-
-const Stack = createNativeStackNavigator()
+import { TabNavigator } from "./TabNavigator"
 
 export const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen name="Detail" component={DetailScreen} />
-      </Stack.Navigator>
+      <TabNavigator />
     </NavigationContainer>
   )
 }
